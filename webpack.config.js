@@ -67,7 +67,8 @@ module.exports = {
         new MiniCssExtractPlugin(),
         new CleanWebpackPlugin(),
         new HtmlPlugin({
-            template: './src/template.html'
+            template: './src/template.html',
+            favicon: './src/favicon/favicon.ico'
         })
     ],
     devtool: "source-map",
