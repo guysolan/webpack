@@ -4,9 +4,15 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const WebpackCdnPlugin = require('webpack-cdn-plugin');
 
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const {CleanWebpackPlugin} = require("clean-webpack-plugin");
-const { loadConfig } = require('@babel/core/lib/config/files');
-const { template } = require('@babel/core');
+const {
+    CleanWebpackPlugin
+} = require("clean-webpack-plugin");
+const {
+    loadConfig
+} = require('@babel/core/lib/config/files');
+const {
+    template
+} = require('@babel/core');
 
 
 
@@ -47,7 +53,7 @@ module.exports = {
                 use: {
                     loader: 'babel-loader'
                 },
-             
+
 
 
 
@@ -55,24 +61,33 @@ module.exports = {
         ],
 
     },
-    // optimization: {
-    //     minimizer: [
-    //         new CssMinimizerPlugin()
-    //     ],
-    // },
+    devtool: "source-map",
     optimization: {
         minimize: true,
-      },
+
+    },
     plugins: [
         new MiniCssExtractPlugin(),
-        new CleanWebpackPlugin(),
-        new HtmlPlugin({
-            template: './src/template.html',
-            favicon: './src/favicon/favicon.ico'
-        })
-    ],
-    devtool: "source-map",
-    // devServer: {
-    //     static: './dist/'
-    // },
+        new CleanWebpackPlugin()
+    ].concat(
+        ["index", "night-splint", "trauma-splint","contact"].map((page) =>
+            new HtmlPlugin({
+                inject: true,
+                template: `./src/${page}.html`,
+                filename: `${page}.html`,
+                favicon: './src/favicon/favicon.ico'
+            })))
+
 }
+
+// new HtmlPlugin({
+//     inject: true,
+//     template: './src/template.html',
+//     favicon: './src/favicon/favicon.ico'
+// }),
+// new HtmlPlugin({
+//     inject: true,
+//     template: './src/night-splint.html',
+//     filename: 'night-splint.html',
+//     favicon: './src/favicon/favicon.ico'
+// })

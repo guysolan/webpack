@@ -16,13 +16,13 @@ export default class Nav extends HTMLElement {
          costs.</p>
    </div>
    <div class="nav-links">
-      <a href='../achilles-ruptures.html'>
+      <a href='./achilles-ruptures.html'>
          <h3>Rupture FAQs</h3>
       </a>
-      <a href='../night-splint.html'>
+      <a href='./night-splint.html'>
          <h3>Night Splint</h3>
       </a>
-      <a href='../trauma-splint.html'>
+      <a href='./trauma-splint.html'>
          <h3>Trauma Splint</h3>
       </a>
    </div>
